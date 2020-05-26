@@ -1,0 +1,44 @@
+<!-- 头部显示 -->
+<p>header works!</p>
+<iframe width="600" height="600" src="http://onewx.kocla.com/kocla-api/resources/exam/bk/learningAnalysis.html?stuId=&stuName=&Type=1&subject=%E8%AF%AD%E6%96%87&subjectName=%E8%AF%AD%E6%96%87&teachId=000000006a575629016a8c1008d32ada&teachName=%E5%A4%A9%E9%BB%91%E6%95%99%E5%AD%A6%E7%82%B9&time=&subjectId=&classId=&className=&sectionName=%E5%88%9D%E4%B8%AD&groupType=grade&nianJiName=%E4%B9%9D%E5%B9%B4%E7%BA%A7&sectionId=&classType=0&t=819191" frameborder="0"></iframe>
+
+<h2>人员登记系统</h2>
+
+
+
+<div class="people_list">
+  <ul>
+    <li>姓 名：<input type="text" id="username" [(ngModel)]="peopleInfo.username" value="fonm_input" /></li>
+    <li>性 别：
+      <input type="radio" value="1" name="sex" id="sex1" [(ngModel)]="peopleInfo.sex"> <label for="sex1">男 </label>　　　
+      <input type="radio" value="2" name="sex"  id="sex2" [(ngModel)]="peopleInfo.sex"> <label for="sex2">女 </label>
+    </li>
+   <li>
+    城 市：
+      <select name="city" id="city" [(ngModel)]="peopleInfo.city">
+          <option [value]="item" *ngFor="let item of peopleInfo.cityList">{{item}}</option>
+      </select>
+
+    </li>
+
+    <li>
+        爱 好：
+        <span *ngFor="let item of peopleInfo.hobby;let key=index;">
+            <input type="checkbox"  [id]="'check'+key" [(ngModel)]="item.checked"/> <label [for]="'check'+key"> {{item.title}}</label>
+            &nbsp;&nbsp;
+        </span>
+     </li>
+     <li>
+       备 注：
+       <textarea name="mark" id="mark" cols="30" rows="10" [(ngModel)]="peopleInfo.mark"></textarea>
+     </li>
+  </ul>
+  <button (click)="doSubmit()" class="submit">获取表单的内容</button>
+  <br>
+  <br>
+  <br>
+  <br>
+  <pre>
+    {{peopleInfo | json}}
+  </pre>
+</div>
